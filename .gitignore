@@ -1,0 +1,7 @@
+trash/
+logfiles/
+data/
+output/
+html/
+*.mat
+*~
