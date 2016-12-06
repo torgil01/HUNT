@@ -56,6 +56,7 @@ The SNR data on the T1 images are used to select the "best" T1 scan which is use
 
 ### 5. DTI
 DTI processing is done with the `fslDTI.sh` script (`Bash/DTI/fslDti.sh`). The script performs standard DTI processing using the FSL tools;
+
 1. Correction of eddy currents using `eddy_correct`
 2. Rotation of bvecs
 3. Create a brainmask
@@ -65,15 +66,11 @@ DTI processing is done with the `fslDTI.sh` script (`Bash/DTI/fslDti.sh`). The s
 # ANTS
 
 ## Template Creation
-Template created using the `antsMultivariateTemplateConstruction2.sh` script. See `buildTemplate`folder for details.
-
-### ANTS template
-
-
-### MNI tempate 
-
+Template created from 32 subjects using the `antsMultivariateTemplateConstruction2.sh` script. There is the study specific template `N32.nii.gz` and a warp to the MNI template.
+See `buildTemplate`folder for details.
 
 ## ANTS warp of T1 images
+The T1 images in native space are warped to the N32 template using `ants_submit.sh` script. 
 
 ## ANTS warp of WML
 The WML maps are warped to the ANTS template space using the t1 -> template warps. Nearest neigbour interpolation is used. See `../Bash/ants/apply_flair_warps.sh`.
