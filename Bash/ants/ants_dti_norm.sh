@@ -35,7 +35,11 @@ for fa in ${faFiles[@]}; do
     dtiDir=`dirname $fa`
     cd $dtiDir
     if [ ! -d "ants" ]; then
-	mkdir ants
+	mkdir ants	
+    else
+	# we assume that this is a rerun
+	echo "Skipping $fa"
+	continue 
     fi
     dtiAntsDir=${dtiDir}/ants
     logfile=${dtiAntsDir}/antsRegistration-log.txt
@@ -48,12 +52,10 @@ for fa in ${faFiles[@]}; do
     t1AntsDir=''
     if [ -d $studyDirName/T1_1/ants ]; then
 	t1Dir=$studyDirName/T1_1
-    else
-	if [ -d $studyDirName/T1_2/ants ]; then
+    elif [ -d $studyDirName/T1_2/ants ]; then
 	    t1Dir=$studyDirName/T1_2	    
-	else
-	    exit -1
-	fi
+    else
+       continue
     fi
     t1AntsDir=${t1Dir}/ants
     t1File=${t1Dir}/${t1Name}
