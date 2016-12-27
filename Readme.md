@@ -84,7 +84,7 @@ FSL's `randomise` is used for all statistics. All statistics are done in the `St
 * merging
 
 
-## Frequency stats on WML maps (aka. lesion mapping)
+## Frequency stats on WML maps (lesion mapping)
 We have only lesion maps for those with Fazekas > 1 (**check**). One must therefore fill the missing data with a empty scan. There is a empty scan (all zeros) in the image space of the ANTS template at
 `HUNT/mkTemplate/FinalTemplates/null.nii.gz`. The template was made by multiplying the N32 template with zero.
 
@@ -96,5 +96,13 @@ ImageMath 3 null.nii.gz m N32.nii.gz  0
 We use a R script to produce design files (for randomise) and a .csv file for selecing the scans.
 
 
+## WML - FLAIR correlations
+Tools for looking at the association between the intensity in FLAIR WMH lesions and other image sequences (T1 and DTI indices). FLAIR/WML images are resampled to native T1 space using `resampleFlairToT1.sh` and the voxelwise correlations are done with `flairLesionValues.m`. 
+
+Need to do the follwing:
+1. Look at FLAIR-T1 and FLAIR-MD correlations in WM (excl WML) and WML. Do only the WML regions exhibit the associations?
+2. Robust procedure for normalization
+3. Compute MD histograms for WM in WML
+4. 
 
 
