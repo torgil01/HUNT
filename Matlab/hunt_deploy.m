@@ -1,9 +1,8 @@
 function hunt_deploy(sourceDir,destDir)
 % deploy nii data from HUNT nii source directory
 % 
-% 
 %sourceDir='/home/torgil/ImageStore/HUNT/test/nii/';
-def.deploySeries = {'T1','FLAIR','DTI'};
+def.deploySeries = {'T1','FLAIR','DTI','TOF','SWI'};
 def.seriesNames={'T1','T2','FLAIR','DTI','DTI_DERIVED','TOF','localizer','localizer2','SWI','SLICEPOS','Unknown'};
 %def.subjectDeployList= '/home/torgil/Projects/HUNT/ProcessingScripts/Matlab/id-file-hunt.txt'; % 'all'; % specify filename if only some are to be deployed
 def.subjectDeployList= 'all';
@@ -87,7 +86,7 @@ function thisSeriesName=idSeries(seriesDir,def)
 seriesNames = def.seriesNames;
 niiFiles = findFiles(seriesDir,def.imFileRegexp);
 numNii = numel(niiFiles);
-if (isempty(numNii) | numNii == 0),
+if (isempty(numNii) || numNii == 0),
     thisSeriesName = 'Empty';
 else
     thisSeriesName = lookUpInfo(niiFiles,def);
