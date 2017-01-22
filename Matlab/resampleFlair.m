@@ -3,9 +3,9 @@ function resampleFlair
 % T1 images. This makes it easier for voxel-to-voxel comarisions of 
 % image values in WML regions. 
 
-subjDir='/home/torgil/Projects/HUNT/DTI_testing/wml/';
+subjDir='/home/torgil/Projects/HUNT/DTI_testing/wml2/';
 
-[studies, ID] = dirdir(subjDir);
+[studies, ~] = dirdir(subjDir);
 nStudies= numel(studies);
 % loop over studies
 for i=1:nStudies,

@@ -1,13 +1,10 @@
 #!/bin/bash
-# remove!
-
 ## coregistration only works best! no need for ants!
-
 # warp flair images to t1
 export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=2
 
 #imDir=/home/torgil/Projects/HUNT/WorkData
-imDir=/home/torgil/Projects/HUNT/DTI_testing/wml2
+imDir=/home/torgil/Projects/HUNT/DTI_testing/wml
 startDir=`pwd`
 t1Name=brain_t1w.nii.gz
 wmlName=wml.nii.gz
