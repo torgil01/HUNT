@@ -80,9 +80,22 @@ FSL's `randomise` is used for all statistics. All statistics are done in the `St
 
 
 ## TBM on Jacobian Determinants
-* Smoothing
-* merging
+The `Bash/ants/createLogJacobian.sh` script creates a log(Jacobian) image from the calculated T1 -> N32 warp using the ANTS script `CreateJacobianDeterminantImage`. Collecting the jacobina determinant images in a 4D stack and optionally smoothing the images makes the images ready for statistics. 
 
+**Collecting images for TBM** : use `Bash/Stats/stackImages.sh` 
+**Smoothing 4D stack** : use `Bash/Util/smoothStack.sh` 
+
+### TBM example
+Morphometric differences between males and females.
+
+1. Make csv and design file in R. (See HUNT R scripts for details.)
+
+```R
+dt.tbm <- dt.hunt[((hasPathology < 2) & (hasT1 = TRUE);.(HUNTID,Sex,Age)]
+writeFslDesign(dt.tbm,'HUNTID',c('Sex','Age'),'stat_t1_genderAge.mat',dataFile=TRUE)
+```
+
+2. 
 
 ## Frequency stats on WML maps (lesion mapping)
 We have only lesion maps for those with Fazekas > 1 (**check**). One must therefore fill the missing data with a empty scan. There is a empty scan (all zeros) in the image space of the ANTS template at
